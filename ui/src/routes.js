@@ -1,6 +1,4 @@
 import Login from './views/Login.vue'
-import Mobile from './views/Mobile.vue'
-import Health from './views/Health.vue'
 import Home from './views/Home.vue'
 import NotFound from './views/404.vue'
 
@@ -9,9 +7,6 @@ import Dashboard from './views/dashbord/DashBoard.vue'
 import User from './views/acl/User.vue'
 import Role from './views/acl/Role.vue'
 import Permission from './views/acl/Permission.vue'
-
-import Collection from './views/collection/Index.vue'
-import Search from './views/collection/KeyWorld.vue'
 
 let routes = [{
         path: '/',
@@ -23,18 +18,6 @@ let routes = [{
         path: '/404',
         component: NotFound,
         name: '',
-        hidden: true
-    },
-    {
-        path: '/mobile/:id',
-        component: Mobile,
-        name: '手机验证',
-        hidden: true
-    },
-    {
-        path: '/health/:id',
-        component: Health,
-        name: '健身卡',
         hidden: true
     },
     {
@@ -83,33 +66,8 @@ let routes = [{
                 name: '权限管理'
             }
         ]
-    },
-    {
-        path: '/',
-        component: Home,
-        name: '',
-        iconCls: 'el-icon-fa-cogs',
-        name: '运营需求',
-        children: [{
-            path: '/collection',
-            component: Collection,
-            iconCls: 'el-icon-fa-cog',
-            meta: {
-                p: 'collection.list'
-            },
-            name: '图片采集'
-        },
-        {
-            path: '/collection/search',
-            component: Search,
-            iconCls: 'el-icon-fa-cog',
-            meta: {
-                p: 'search.list'
-            },
-            name: '关键词搜索'
-        }
-        ]
     }
+    
  ];
 
 export default routes;
