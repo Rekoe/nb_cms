@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: rest
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: kouxian
+Implementation-Vendor-Id: com.rekoe
+Build-Jdk: 1.8.0_144
+Created-By: Maven Integration for Eclipse
+Main-Class: com.rekoe.MainLauncher
+
