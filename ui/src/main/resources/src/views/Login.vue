@@ -56,18 +56,12 @@ export default {
       showDialog: false
     };
   },
-  computed: {
-    ...mapState({
-      loginUser: state => state.loginUser
-    })
-  },
   created() {
     if (this.loginUser.id) {
       this.$router.push({ path: "/dashboard" });
     }
   },
   methods: {
-    ...mapMutations(["save", "remove"]),
     refreshCaptcha() {
       this.captcha = baseUrl + "/captcha?length=4&" + Math.random();
     },
@@ -75,10 +69,6 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$api.User.login(this.loginForm, data => {
-            let loginUser = data.loginUser;
-            loginUser.roles = data.roles;
-            loginUser.permissions = data.permissions;
-            this.save(loginUser);
             this.$router.push({ path: "/dashboard" });
           });
         } else {
