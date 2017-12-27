@@ -148,7 +148,7 @@ public class UserModule {
 	@At("/role/?")
 	@NutzRequiresPermissions(value = "user.role", name = "用户角色授权信息", tag = "用户管理", enable = true)
 	public Result roleInfo(long id) {
-		return Result.success().addData("infos", userService.view(id).getRoles());
+		return Result.success().addData("infos", roleService.getRoles(id));
 	}
 
 	/**

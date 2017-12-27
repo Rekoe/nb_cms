@@ -11,6 +11,7 @@ import org.nutz.dao.entity.annotation.Index;
 import org.nutz.dao.entity.annotation.ManyMany;
 import org.nutz.dao.entity.annotation.Table;
 import org.nutz.dao.entity.annotation.TableIndexes;
+import org.nutz.json.JsonField;
 
 import com.rekoe.service.entity.DataBaseEntity;
 
@@ -38,6 +39,7 @@ public class Role extends DataBaseEntity implements Serializable {
 	private List<Permission> permissions;
 
 	@Column("is_lock")
+	@JsonField(ignore=true)
 	private boolean lock;
 
 	public Long getId() {

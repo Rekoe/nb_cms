@@ -8,6 +8,9 @@ import java.util.Map;
 import org.nutz.dao.Chain;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Dao;
+import org.nutz.dao.Sqls;
+import org.nutz.dao.entity.Record;
+import org.nutz.dao.sql.Sql;
 import org.nutz.ioc.loader.annotation.Inject;
 import org.nutz.ioc.loader.annotation.IocBean;
 import org.nutz.lang.ContinueLoop;
@@ -128,5 +131,13 @@ public class RoleService extends BaseService<Role> {
 			return user.getRoles();
 		}
 		return new ArrayList<>();
+	}
+	
+	public List<Record> getRoles(long userid){
+		Sql sql = Sqls.create("SELECT r.id,r.description as description,CASE sur.userid IS NULL WHEN 1 THEN FALSE ELSE TRUE END AS selected FROM system_role r LEFT JOIN (SELECT * FROM system_user_role WHERE userid = @id) sur ON r.id = sur.roleid");
+		sql.setCallback(Sqls.callback.records());
+		sql.params().set("id", userid);
+		dao().execute(sql);
+		return sql.getList(Record.class);
 	}
 }
